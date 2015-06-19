@@ -1,7 +1,9 @@
-main = main.scm
+test = test/run.scm
 gosh ?= gosh
 
-default: run
+default: test
 
-run: $(main)
+.PHONY: default test
+
+test: $(test)
 	$(gosh) $<
