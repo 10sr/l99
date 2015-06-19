@@ -1,7 +1,7 @@
-(define (my-last lst)
+(define (my-last l)
   ;; TODO: Avoid error when lst is null
   ;; should use null?
-  (if (eq? (cdr lst)
+  (if (eq? (cdr l)
           '())
-      (list (car lst))
-      (my-last (cdr lst))))
+      (list (car l))
+      (my-last (cdr l))))
