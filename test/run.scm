@@ -13,5 +13,9 @@
        '(d)
        (my-last '(a b c d)))
 
+(test* "Find the last but one box of a list"
+       '(c d)
+       (my-but-last '(a b c d)))
+
 
 (test-end)
