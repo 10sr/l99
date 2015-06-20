@@ -17,5 +17,10 @@
        '(c d)
        (my-but-last '(a b c d)))
 
+(test* "Find the K'th element of a list"
+       'c
+       (element-at '(a b c d e)
+                   3))
 
-(test-end)
+
+(test-end :exit-on-failure #t)

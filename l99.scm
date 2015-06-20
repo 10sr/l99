@@ -14,3 +14,15 @@
           (if (null? (cddr l))
               l
               (my-but-last (cdr l))))))
+
+(define (element-at l n)
+  (if (eq? n
+          0)
+      (error "0 passed as index")
+      (if (null? l)
+          (error "Index out of list")
+          (if (eq? n
+                   1)
+              (car l)
+              (element-at (cdr l)
+                          (- n 1))))))
