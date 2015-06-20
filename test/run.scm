@@ -23,4 +23,6 @@
                    3))
 
 
-(test-end :exit-on-failure #t)
+;; Somehow in travis environment cannot use :exit-on-failure
+;;(test-end :exit-on-failure #t)
+(exit (test-end))
