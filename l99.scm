@@ -1,6 +1,4 @@
 (define (my-last l)
-  ;; TODO: Avoid error when lst is null
-  ;; should use null?
   (if (null? l)
       (error "Empty list given")
       (if (null? (cdr l))
