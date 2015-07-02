@@ -5,13 +5,15 @@
 ;; http://practical-scheme.net/gauche/man/gauche-refj_105.html
 ;; I want to use `test-module', but I currently do not know how to make modules
 
-;; TODO: Use `...' to accept multiple functions
 (define-syntax test-l99
   (syntax-rules ()
-    ((_ desc from to func)
-     (test* desc
-            to
-            (apply func from)))))
+    ((_ desc from to func ...)
+     (let loop((funcs (list func ...)))
+       (unless (null? funcs)
+               (test* desc
+                      to
+                      (apply (car funcs) from))
+               (loop (cdr funcs)))))))
 
 (test-start "l99")
 
@@ -20,7 +22,7 @@
 (test-l99 "L1: Find the last box of a list"
           '((a b c d))
           '(d)
-          my-last)
+          my-last my-last)
 
 (test-l99 "L2: Find the last but one box of a list"
           '((a b c d))
