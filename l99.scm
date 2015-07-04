@@ -25,3 +25,20 @@
               (car l)
               (element-at (cdr l)
                           (- n 1))))))
+
+(define (my-length l)
+  (let loop((l l)
+            (n 0))
+    (if (null? l)
+        n
+        (loop (cdr l)
+              (+ n 1)))))
+
+(define (my-reverse l)
+  (let loop((from l)
+            (to '()))
+    (if (null? from)
+        to
+        (loop (cdr from)
+              (cons (car from)
+                    to)))))

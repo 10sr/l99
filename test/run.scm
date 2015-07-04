@@ -1,5 +1,4 @@
 (use gauche.test)
-(load "./l99.scm")
 
 ;; http://goyoki.hatenablog.com/entry/2014/04/27/120043
 ;; http://practical-scheme.net/gauche/man/gauche-refj_105.html
@@ -19,6 +18,8 @@
 
 (test-section "Working with lists")
 
+(load "./l99.scm")
+
 (test-l99 "L1: Find the last box of a list"
           '((a b c d))
           '(d)
@@ -34,6 +35,15 @@
           'c
           element-at)
 
+(test-l99 "L4: Find the number of elements of a list"
+          '((a b c d e))
+          5
+          my-length)
+
+(test-l99 "L5: reverse a list"
+          '((a b c d e))
+          '(e d c b a)
+          my-reverse)
 
 ;; Somehow in travis environment cannot use :exit-on-failure
 ;;(test-end :exit-on-failure #t)
