@@ -65,6 +65,16 @@
           #f
           palin?)
 
+(test-l99 "L7: Flatten a nested list structure"
+          '((a b))
+          '(a b)
+          flatten)
+
+(test-l99 "L7: Flatten a nested list structure"
+          '((a (b (c d) e)))
+          '(a b c d e)
+          flatten)
+
 ;; Somehow in travis environment cannot use :exit-on-failure
 ;;(test-end :exit-on-failure #t)
 (exit (test-end))

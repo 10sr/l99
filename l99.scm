@@ -16,7 +16,7 @@
 
 (define (element-at l n)
   (if (eq? n
-          0)
+           0)
       (error "0 passed as index")
       (if (null? l)
           (error "Index out of list")
@@ -46,3 +46,9 @@
 (define (palin? l)
   (equal? l
           (my-reverse l)))
+
+(define (flatten l)
+  (apply append (map (lambda (e)
+                       (if (pair? e)
+                           (flatten e)
+                           (list e))) l)))
