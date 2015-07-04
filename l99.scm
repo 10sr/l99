@@ -62,3 +62,16 @@
                     (cons e r)))
               '()
               l))
+
+(define (pack l)
+  (fold-right (lambda (e r)
+                (if (and (pair? r)
+                         (eq? e
+                              (caar r)))
+                    (cons (cons e
+                                (car r))
+                          (cdr r))
+                    (cons (list e)
+                          r)))
+              '()
+              l))

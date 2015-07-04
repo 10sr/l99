@@ -80,6 +80,11 @@
           '(a b c d e)
           compress)
 
+(test-l99 "L9: Pack consecutive duplicates of list elements into sublists"
+          '((a a a a b b c c c c c d e))
+          '((a a a a) (b b) (c c c c c) (d) (e))
+          pack)
+
 ;; Somehow in travis environment cannot use :exit-on-failure
 ;;(test-end :exit-on-failure #t)
 (exit (test-end))
