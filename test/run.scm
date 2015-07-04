@@ -75,6 +75,11 @@
           '(a b c d e)
           flatten)
 
+(test-l99 "L8: Eliminate consecutive duplicates of list elemetns"
+          '((a a a a b b c c c c c d e))
+          '(a b c d e)
+          compress)
+
 ;; Somehow in travis environment cannot use :exit-on-failure
 ;;(test-end :exit-on-failure #t)
 (exit (test-end))
