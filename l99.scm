@@ -42,3 +42,7 @@
         (loop (cdr from)
               (cons (car from)
                     to)))))
+
+(define (palin? l)
+  (equal? l
+          (my-reverse l)))

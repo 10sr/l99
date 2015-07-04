@@ -1,5 +1,8 @@
 (use gauche.test)
 
+;; String module
+(use srfi-13)
+
 ;; http://goyoki.hatenablog.com/entry/2014/04/27/120043
 ;; http://practical-scheme.net/gauche/man/gauche-refj_105.html
 ;; I want to use `test-module', but I currently do not know how to make modules
@@ -9,7 +12,9 @@
     ((_ desc from to func ...)
      (let loop((funcs (list func ...)))
        (unless (null? funcs)
-               (test* desc
+               (test* (string-concatenate (list desc
+                                                ": "
+                                                (x->string from)))
                       to
                       (apply (car funcs) from))
                (loop (cdr funcs)))))))
@@ -44,6 +49,21 @@
           '((a b c d e))
           '(e d c b a)
           my-reverse)
+
+(test-l99 "L6: Find out whether a list if a palindrome"
+          '((a b c c b a))
+          #t
+          palin?)
+
+(test-l99 "L6: Find out whether a list if a palindrome"
+          '((a b c b a))
+          #t
+          palin?)
+
+(test-l99 "L6: Find out whether a list if a palindrome"
+          '((a b c c a))
+          #f
+          palin?)
 
 ;; Somehow in travis environment cannot use :exit-on-failure
 ;;(test-end :exit-on-failure #t)
