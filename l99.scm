@@ -55,11 +55,10 @@
 
 (define (compress l)
   (fold-right (lambda (e r)
-                (if (null? r)
-                    (list e)
-                    (if (eq? e
-                             (car r))
-                        r
-                        (cons e r))))
+                (if (and (pair? r)
+                         (eq? e
+                              (car r)))
+                    r
+                    (cons e r)))
               '()
               l))
