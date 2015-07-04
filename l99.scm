@@ -75,3 +75,54 @@
                           r)))
               '()
               l))
+
+(define (encode l)
+  (map (lambda (l)
+         (list (my-length l)
+               (car l)))
+       (pack l)))
+
+(define (encode-modified l)
+  (map (lambda (l)
+         (let1 len (my-length l)
+               (if (> len 1)
+                   (list len
+                         (car l))
+                   (car l))))
+       (pack l)))
+
+(define (decode l)
+  (apply append (map (lambda (e)
+                       (if (pair? e)
+                           (make-list (car e)
+                                      (cadr e))
+                           (list e)))
+                     l)))
+
+(define (encode-direct l)
+  (my-reverse (let loop ((num 1)
+             (current (car l))
+             (rest (cdr l))
+             (result '()))
+    (if (pair? rest)
+        (if (eq? current
+                 (car rest))
+            (loop (+ num 1)
+                  current
+                  (cdr rest)
+                  result)
+            (loop 1
+                  (car rest)
+                  (cdr rest)
+                  (cons (if (eq? num
+                                 1)
+                            current
+                            (list num
+                                  current))
+                        result)))
+        (cons (if (eq? num
+                       1)
+                  current
+                  (list num
+                        current))
+              result)))))

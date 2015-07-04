@@ -85,6 +85,28 @@
           '((a a a a) (b b) (c c c c c) (d) (e))
           pack)
 
+(test-l99 "L10: Run-length encoding of a list"
+          '((a a a a b b c c c c c d e))
+          '((4 a) (2 b) (5 c) (1 d) (1 e))
+          encode)
+
+(test-l99 "L11: Modified run-length encoding"
+          '((a a a a b b c c c c c d e))
+          '((4 a) (2 b) (5 c) d e)
+          encode-modified)
+
+(test-l99 "L12: Decode a run-length encoding list"
+          '(
+            ((4 a) (2 b) (5 c) d e)
+            )
+          '(a a a a b b c c c c c d e)
+          decode)
+
+(test-l99 "L13: Run-length encoding of a list (direct solution)"
+          '((a a a a b b c c c c c d e))
+          '((4 a) (2 b) (5 c) d e)
+          encode-direct)
+
 ;; Somehow in travis environment cannot use :exit-on-failure
 ;;(test-end :exit-on-failure #t)
 (exit (test-end))
