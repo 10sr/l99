@@ -117,6 +117,11 @@
           '(a a a b b b c c c d d d e e e)
           repli)
 
+(test-l99 "L16: Split a list into two pars; the length of the first part is given"
+          '((a b c d e f g) 3)
+          '((a b c) (d e f g))
+          split)
+
 ;; Somehow in travis environment cannot use :exit-on-failure
 ;;(test-end :exit-on-failure #t)
 (exit (test-end))

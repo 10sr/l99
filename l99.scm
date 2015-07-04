@@ -143,3 +143,12 @@
                         r))
               '()
               l))
+
+(define (split l n)
+  (let loop ((rest l)
+             (left '()))
+    (if (eq? (my-length left)
+             n)
+        `(,left ,rest)
+        (loop (cdr rest)
+              `(,@left ,(car rest))))))
