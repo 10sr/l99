@@ -107,6 +107,16 @@
           '((4 a) (2 b) (5 c) d e)
           encode-direct)
 
+(test-l99 "L14: Duplicate the elements of a list"
+          '((a b c d e))
+          '(a a b b c c d d e e)
+          dupli)
+
+(test-l99 "L15: Replicate the elements of a list a given number of times"
+          '((a b c d e) 3)
+          '(a a a b b b c c c d d d e e e)
+          repli)
+
 ;; Somehow in travis environment cannot use :exit-on-failure
 ;;(test-end :exit-on-failure #t)
 (exit (test-end))

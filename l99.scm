@@ -126,3 +126,20 @@
                   (list num
                         current))
               result)))))
+
+(define (dupli l)
+  (fold-right (lambda (e r)
+                (apply list
+                       e
+                       e
+                       r))
+              '()
+              l))
+
+(define (repli l n)
+  (fold-right (lambda (e r)
+                (append (make-list n
+                                   e)
+                        r))
+              '()
+              l))
